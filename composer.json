@@ -1,0 +1,7 @@
+{
+  "require": {
+    "php": ">=5.6",
+    "rmrevin/pivotal-tracker-api": "dev-master",
+    "michelf/php-markdown": "1.7.*"
+  }
+}
