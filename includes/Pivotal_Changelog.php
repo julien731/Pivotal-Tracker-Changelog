@@ -167,7 +167,7 @@ class Pivotal_Changelog {
 		foreach ( $stories as $story ) {
 
 			if ( 'Release - ' . $this->get_version() === $story['name'] ) {
-				$this->release_date = $story['accepted_at'];
+				$this->release_date = isset( $story['accepted_at'] ) ? $story['accepted_at'] : '';
 				continue;
 			}
 
