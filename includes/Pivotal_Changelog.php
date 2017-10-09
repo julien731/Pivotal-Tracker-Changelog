@@ -142,7 +142,7 @@ class Pivotal_Changelog {
 		}
 
 		$result   = array( 'success' => true, 'data' => array() );
-		$response = $this->get_client()->projects()->stories()->getList( $this->project_id, array( 'with_label' => "@$this->version" ) );
+		$response = $this->get_client()->projects()->stories()->getList( $this->project_id, array( 'with_label' => "@$this->version" ), 50 );
 
 		if ( $response instanceof ErrorResponse ) {
 			$result['success'] = false;
