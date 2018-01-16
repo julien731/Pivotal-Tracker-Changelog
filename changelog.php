@@ -31,7 +31,7 @@ $project = $changelog->get_project();  ?>
 			<pre><code>
 				<?php
 				foreach ( $changelog->get_stories()['data'] as $story ) {
-					printf( '- <strong>%1$s:</strong> <a href="%3$s" target="_blank">%2$s</a>' . "\n", strtoupper( $story['story_type'] ), $story['name'], $story['url'] );
+					printf( '- <strong>%1$s:</strong> <a href="%3$s" target="_blank">%2$s</a>' . "\n", strtoupper( $story['story_type'] ), str_replace( '**', '', $story['name'] ), $story['url'] );
 				}
 				?>
 			</code></pre>
