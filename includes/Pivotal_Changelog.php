@@ -166,8 +166,15 @@ class Pivotal_Changelog {
 
 		foreach ( $stories as $story ) {
 
+			// Get the release date and ignore release story.
 			if ( 'Release - ' . $this->get_version() === $story['name'] ) {
 				$this->release_date = isset( $story['accepted_at'] ) ? $story['accepted_at'] : '';
+				continue;
+			}
+
+			// Do not include stories that haven't been accepted.
+			// It can easily add improperly tagged stories that don't belong to the release.
+			if ( 'accepted' !== $story['current_state'] ) {
 				continue;
 			}
 
