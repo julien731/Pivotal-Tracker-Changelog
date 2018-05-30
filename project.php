@@ -17,8 +17,27 @@
 			<form method="get" action="/">
 				<div class="form-group">
 					<label for="project_id">Project ID</label>
-					<input type="text" name="project_id" class="form-control" id="project_id" placeholder="Pivotal Tracker project ID">
-					<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+					<?php
+					// Get the Pivotal_Changelog instance.
+					$tracker = new Pivotal_Changelog( false, false );
+
+					// Get all the user's projects.
+					$projects = $tracker->get_projects();
+
+					// Make sure we have a valid response.
+					if ( true !== $projects['success'] ) :
+						echo 'Aw. Something went wrong. Did you use an incorrect token?';
+					else : ?>
+
+						<select name="project_id" class="form-control" id="project_id">
+							<?php
+							foreach ( $projects['data'] as $project ) {
+								printf( '<option value="%1$s">%2$s</option>', $project['id'], $project['name'] );
+							}
+							?>
+						</select>
+					
+					<?php endif; ?>
 				</div>
 				<div class="form-group">
 					<label for="version">Version</label>
