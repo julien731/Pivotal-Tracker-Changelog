@@ -113,6 +113,26 @@ class Pivotal_Changelog {
 	}
 
 	/**
+	 * Get the list of projects for the current client.
+	 * 
+	 * @return array
+	 */
+	public function get_projects() {
+
+		$result   = array( 'success' => true, 'data' => array() );
+		$response = $this->get_client()->projects()->getList();
+		
+		if ( $response instanceof ErrorResponse ) {
+			$result['success'] = false;
+		} else {
+			$result['data'] = $response->getData();
+		}
+
+		return $result;
+
+	}
+
+	/**
 	 * Get the project details.
 	 *
 	 * @return array
