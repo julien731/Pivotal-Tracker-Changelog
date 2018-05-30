@@ -58,7 +58,9 @@ class Pivotal_Changelog {
 		require( 'vendor/autoload.php' );
 
 		// Get stories now to "cache" them and get all data available upfront.
-		$this->get_stories();
+		if ( 0 !== $this->project_id ) {
+			$this->get_stories();
+		}
 	}
 
 	/**
