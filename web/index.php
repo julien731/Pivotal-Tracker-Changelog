@@ -9,10 +9,12 @@ if ( ! empty( $user_token ) ) {
 
 require( 'includes/Pivotal_Changelog.php' );
 
-$token = Pivotal_Changelog::get_token();
+if ( empty( $user_token ) ) {
+	$user_token = Pivotal_Changelog::get_token();
+}
 
 if ( empty( $project_id ) || empty( $release_version ) ) :
-	if ( empty( $token ) ) {
+	if ( empty( $user_token ) ) {
 		include( 'get-token.php' );
 	} else {
 		include( 'project.php' );
