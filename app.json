@@ -1,0 +1,6 @@
+{
+  "name": "Pivotal Tracker Changelog Generator",
+  "description": "A small script to generate changelogs off Pivotal Tracker and based on Nimbl3's workflow.",
+  "repository": "https://github.com/julien731/Pivotal-Tracker-Changelog",
+  "addons": []
+}
