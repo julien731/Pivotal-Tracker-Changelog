@@ -55,7 +55,7 @@ class Pivotal_Changelog {
 		$this->set_api_key();
 
 		// Load the Composer dependencies.
-		require( 'vendor/autoload.php' );
+		require( '../vendor/autoload.php' );
 
 		// Get stories now to "cache" them and get all data available upfront.
 		if ( 0 !== $this->project_id ) {
