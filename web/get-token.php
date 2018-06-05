@@ -11,7 +11,7 @@ include( 'templates/jumbotron.html' );
 			<form method="get" action="/">
 				<div class="form-group">
 					<label for="version">Token</label>
-					<input type="text" name="user_token" class="form-control" id="user_token" placeholder="User token">
+					<input type="text" name="user_token" class="form-control" id="user_token" placeholder="User token" required>
 				</div>
 				<button type="submit" class="btn btn-primary">Save Token</button>
 			</form>
