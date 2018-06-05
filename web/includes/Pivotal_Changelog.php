@@ -82,14 +82,38 @@ class Pivotal_Changelog {
 	}
 
 	/**
+	 * Try to get the user token (if it has been set).
+	 * 
+	 * @return string
+	 */
+	public static function get_token() {
+
+		// Set the token to an empty string.
+		$token = '';
+
+		// Try to get token from cookie.
+		if ( isset( $_COOKIE['tracker_user_token'] ) ) {
+			$token = trim( $_COOKIE['tracker_user_token'] );
+		}
+
+		// Try to get the token from file.
+		else {
+			$token_filepath = $_SERVER['DOCUMENT_ROOT'] . '/.token';
+			$token          = file_exists( $token_filepath ) ? file_get_contents( $token_filepath ) : '';
+		}
+
+		return $token;
+
+	}
+
+	/**
 	 * Retrieve the user API key from the .token file.
 	 *
 	 * @return void
 	 */
 	public function set_api_key() {
 		// Get the user token.
-		$token_filepath = $_SERVER['DOCUMENT_ROOT'] . '/.token';
-		$this->api_key  = file_exists( $token_filepath ) ? file_get_contents( $token_filepath ) : null;
+		$this->api_key  = self::get_token();
 
 		if ( empty( $this->api_key ) ) {
 			die( 'API key missing' );
