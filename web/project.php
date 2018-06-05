@@ -1,13 +1,7 @@
-<?php include( 'templates/header.html' ); ?>
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-	<div class="container">
-		<h1>Changelogs for Pivotal</h1>
-		<p>Do you like copy-pasting? No? Me neither. Let's get those changelogs generated automatically! This method for generating changelogs for Pivotal Tracker projects is based on the workflow used at
-			<a href="https://nimbl3.com" target="_blank">Nimbl3</a>.</p>
-	</div>
-</div>
+<?php
+include( 'templates/header.html' );
+include( 'templates/jumbotron.html' ); 
+?>
 
 <div class="container">
 	<!-- Example row of columns -->
