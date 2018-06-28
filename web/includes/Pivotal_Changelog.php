@@ -200,6 +200,22 @@ class Pivotal_Changelog {
 	}
 
 	/**
+	 * List the user stories by story type.
+	 * 
+	 * @return array
+	 */
+	public function get_stories_by_type() {
+
+		$stories = array();
+
+		foreach ( $this->get_stories()['data'] as $story ) {
+			$stories[$story['story_type']][] = $story;
+		}
+
+		return $stories;
+	}
+
+	/**
 	 * Filter the user stories and extract the project-specific ones.
 	 *
 	 * @param $stories array The list of user stories.
