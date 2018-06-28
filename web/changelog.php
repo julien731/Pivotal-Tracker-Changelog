@@ -28,13 +28,15 @@ $project = $changelog->get_project();  ?>
 			</ul>
 
 			<h2>Markdown</h2>
-			<pre><code>
-				<?php
-				foreach ( $changelog->get_stories()['data'] as $story ) {
-					printf( '- **%1$s:** [%2$s](%3$s)' . "\n", strtoupper( $story['story_type'] ), str_replace( '**', '', $story['name'] ), $story['url'] );
-				}
-				?>
-			</code></pre>
+			<?php
+			// Store all the log lines in here.
+			$log = array();
+			foreach ( $changelog->get_stories()['data'] as $story ) {
+				$log[] = sprintf( '- **%1$s:** [%2$s](%3$s)', strtoupper( $story['story_type'] ), str_replace( '**', '', $story['name'] ), $story['url'] );
+			}
+			?>
+			
+			<pre><code><?php echo implode( "\n", $log ); ?></code></pre>
 		</div>
 	</div>
 </div> <!-- /container -->
